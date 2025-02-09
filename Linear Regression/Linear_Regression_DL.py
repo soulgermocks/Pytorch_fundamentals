@@ -14,9 +14,10 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f"Device in use: {device}\n")
 
 # Lets get our data ready
+# Our data will be of these combinations (0.3 * X + 0.9)
 weights = 0.3 
 bias = 0.9
-# Our data will be of these combinations (0.3 * X + 0.9)
+
 
 start = 0
 end = 1
@@ -24,8 +25,8 @@ step = 0.02
 
 X = torch.arange(start, end, step).unsqueeze(dim=1)
 y = weights * X + bias
-print(f"Number of X samples: {len(X)}")
-print(f"Number of y samples: {len(y)}")
+print(f"Number of X samples: \n{len(X)}")
+print(f"Number of y samples: \n{len(y)}")
 print("First 10 X & y samples:")
 print(f"X: {X[:10]}")
 print(f"y: {y[:10]}")
@@ -51,7 +52,8 @@ def plot_predictions(training_status,
     A helper function to visualize our data.
 
     Args:
-        - predictions: Our Model predicted data 
+        - training_status: Save name for the plot that we're saving.
+        - predictions: Our Model predicted data.
     Returns:
         - A scatter plot visualizing the data.
     """
